@@ -1,0 +1,17 @@
+[project]
+name = "josecoin"
+description = "JoseCoin fungible token (SIP-010-like) built with Clarinet"
+authors = []
+telemetry = true
+cache_dir = "./.cache"
+
+[contracts.sip010-ft-trait]
+path = "contracts/sip010-ft-trait.clar"
+
+[contracts.josecoin]
+path = "contracts/josecoin.clar"
+depends_on = ["sip010-ft-trait"]
+
+[repl.analysis]
+passes = ["check_checker"]
+check_checker = { trusted_sender = false, trusted_caller = false, callee_filter = false }
